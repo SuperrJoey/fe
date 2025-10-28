@@ -7,6 +7,7 @@ import Register from './components/Auth/Register';
 import Dashboard from './components/Dashboard/Dashboard';
 import ProtectedRoute from './components/Common/ProtectedRoute';
 import './App.css';
+import LandingPage from './components/Landing/LandingPage';
 
 function App() {
   return (
@@ -25,7 +26,9 @@ function App() {
                   </ProtectedRoute>
                 } 
               />
-              <Route path="/" element={<Navigate to="/dashboard" replace />} />
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
             </Routes>
           </div>
         </Router>
