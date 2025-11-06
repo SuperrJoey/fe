@@ -27,6 +27,7 @@ export const SocketProvider: React.FC<SocketProviderProps> = ({ children }) => {
   useEffect(() => {
     const socketInstance = io(process.env.REACT_APP_API_URL || 'http://localhost:5000', {
       withCredentials: true,
+      transports: ['websocket', 'polling'],
     });
 
     socketInstance.on('connect', () => {
