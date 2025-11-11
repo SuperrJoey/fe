@@ -8,8 +8,26 @@ const LandingPage: React.FC = () => {
 
   return (
     <div className="min-h-screen text-indigo-50 bg-[#0b1020] bg-[radial-gradient(1200px_600px_at_20%_-20%,rgba(34,211,238,0.12),transparent_60%),radial-gradient(1200px_600px_at_80%_-20%,rgba(107,124,255,0.15),transparent_60%)]">
-      <nav className="flex items-center justify-between h-16 px-6 border-b border-white/5 bg-white/5 backdrop-blur-md">
+      <nav className="flex items-center justify-between h-16 px-4 md:px-6 border-b border-white/5 bg-white/5 backdrop-blur-md">
         <div className="font-bold tracking-wide">Cryptalk</div>
+        <div className="hidden md:flex items-center gap-4 text-sm">
+          <a 
+            href="#how-it-works" 
+            onClick={(e) => {
+              e.preventDefault();
+              const element = document.getElementById('how-it-works');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }}
+            className="hover:text-indigo-200 transition-colors"
+          >
+            How it works
+          </a>
+          <Link to="/pricing" className="hover:text-indigo-200 transition-colors">Pricing</Link>
+          <Link to="/docs" className="hover:text-indigo-200 transition-colors">Docs</Link>
+          <Link to="/faq" className="hover:text-indigo-200 transition-colors">FAQ</Link>
+        </div>
         <div className="flex gap-3">
           {user ? (
             <Link to="/dashboard" className="inline-flex items-center rounded-xl border border-transparent bg-indigo-500 px-4 py-2 text-sm font-medium text-white shadow-[0_10px_30px_rgba(99,102,241,0.25)] hover:bg-indigo-600">
@@ -44,7 +62,17 @@ const LandingPage: React.FC = () => {
             >
               {user ? 'Go to Dashboard' : 'Create your secure workspace'}
             </Link>
-            <a href="#how-it-works" className="inline-flex items-center rounded-xl border border-white/20 px-5 py-3 text-sm font-semibold hover:border-white/30">
+            <a 
+              href="#how-it-works" 
+              onClick={(e) => {
+                e.preventDefault();
+                const element = document.getElementById('how-it-works');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+              className="inline-flex items-center rounded-xl border border-white/20 px-5 py-3 text-sm font-semibold hover:border-white/30 transition-all hover:scale-105"
+            >
               How it works
             </a>
           </div>
@@ -66,20 +94,8 @@ const LandingPage: React.FC = () => {
         </div>
       </header>
 
-      <section id="how-it-works" className="grid gap-4 px-6 py-9 md:grid-cols-2 lg:grid-cols-4">
-        {[
-          { icon:"🔐", title:"End‑to‑End Encrypted Chat", desc:"Messages are encrypted on your device using AES‑256. Keys never leave your browser."},
-          { icon:"🗂️", title:"Secure File Vault", desc:"Files are encrypted before upload and stored in GridFS. Access is strictly controlled."},
-          { icon:"⛓️", title:"Blockchain Verification", desc:"SHA‑256 hashes anchored on Polygon provide tamper‑proof audit trails for messages and files."},
-          { icon:"🕵️", title:"Private Search", desc:"Search locally over decrypted content — plaintext never touches the server."}
-        ].map((f) => (
-          <div key={f.title} className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 transition hover:-translate-y-1 hover:border-white/20">
-            <div className="mb-2 text-lg">{f.icon}</div>
-            <h3 className="mb-1 text-base font-semibold">{f.title}</h3>
-            <p className="text-sm text-indigo-200/80 leading-relaxed">{f.desc}</p>
-          </div>
-        ))}
-      </section>
+      {/* How It Works Section */}
+      <HowItWorks />
 
       <section className="mx-6 mb-8 rounded-2xl border border-white/20 bg-gradient-to-b from-indigo-400/20 to-cyan-300/10 p-6 text-center">
         <h2 className="mb-2 text-[clamp(20px,3vw,28px)] font-bold">Own your data. Collaborate with confidence.</h2>
@@ -95,10 +111,29 @@ const LandingPage: React.FC = () => {
       <footer className="flex items-center justify-between border-t border-white/10 px-6 py-5 text-indigo-200/80">
         <div>© {new Date().getFullYear()} Cryptalk</div>
         <div className="flex gap-4">
-          <a href="#how-it-works" className="hover:text-indigo-50">How it works</a>
-          <a href="https://polygon.technology" target="_blank" rel="noreferrer" className="hover:text-indigo-50">Polygon</a>
-          <a href="https://mongodb.com" target="_blank" rel="noreferrer" className="hover:text-indigo-50">MongoDB</a>
-        </div>
+            <a 
+              href="#how-it-works" 
+              onClick={(e) => {
+                e.preventDefault();
+                const element = document.getElementById('how-it-works');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+              className="hover:text-indigo-50 transition-colors"
+            >
+              How it works
+            </a>
+            <Link to="/pricing" className="hover:text-indigo-50 transition-colors">
+              Pricing
+            </Link>
+            <Link to="/docs" className="hover:text-indigo-50 transition-colors">
+              Docs
+            </Link>
+            <Link to="/faq" className="hover:text-indigo-50 transition-colors">
+              FAQ
+            </Link>
+          </div>
       </footer>
     </div>
   );
